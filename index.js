@@ -2,7 +2,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./dbConnect.js";
-import { notFoundMiddleware, loginErrorMiddleware } from "./MiddleWares/errorMiddleware.js";
+
 import formDataRouter from "./routes/formDataRoute.js";
 
 //constants
@@ -23,8 +23,8 @@ app.get("/", (req, res) => {
 app.use("/", formDataRouter);
 
 //error middleware always should be in last
-app.use(loginErrorMiddleware);
-app.use(notFoundMiddleware);
+// app.use(loginErrorMiddleware);
+// app.use(notFoundMiddleware);
 
 //caalling
 app.listen(PORT, () => {
