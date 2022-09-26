@@ -7,7 +7,7 @@ import formDataRouter from "./routes/formDataRoute.js";
 
 //constants
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 80;
 
 //additional functions
 app.use(express.json());
@@ -28,5 +28,5 @@ app.use("/", formDataRouter);
 
 //caalling
 app.listen(PORT, () => {
-  console.log("server running at port http://localhost:3001");
+  console.log("server running at port http://localhost:80");
 });
