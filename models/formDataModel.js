@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const formDataSchema = new mongoose.Schema(
   {
@@ -52,4 +52,4 @@ formDataSchema.set("toJSON", {
   },
 });
 
-export default formData;
+module.exports = formData;

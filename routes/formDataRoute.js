@@ -1,11 +1,11 @@
 // for form data routes
-import express from "express";
-import { postFormData, getFormData, getFormDataByID } from "../controllers/formDataController.js";
+const express = require("express");
+const form = require("../controllers/formDataController.js");
 
 const formDataRouter = express.Router();
 
-formDataRouter.route("/formData").post(postFormData);
-formDataRouter.route("/formData").get(getFormData);
-formDataRouter.route("/formDataById/:id").get(getFormDataByID);
+formDataRouter.route("/formData").post(form.postFormData);
+formDataRouter.route("/formData").get(form.getFormData);
+formDataRouter.route("/formDataById/:id").get(form.getFormDataByID);
 
-export default formDataRouter;
+module.exports = formDataRouter;

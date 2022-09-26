@@ -1,13 +1,12 @@
 //importing
-import dotenv from "dotenv";
-import express from "express";
-import connectDB from "./dbConnect.js";
-
-import formDataRouter from "./routes/formDataRoute.js";
+const dotenv = require("dotenv");
+const express = require("express");
+const connectDB = require("./dbConnect");
+const formDataRouter = require("./routes/formDataRoute.js");
 
 //constants
 const app = express();
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 3005;
 
 //additional functions
 app.use(express.json());
@@ -28,5 +27,5 @@ app.use("/", formDataRouter);
 
 //caalling
 app.listen(PORT, () => {
-  console.log("server running at port http://localhost:80");
+  console.log("server running at port http://localhost:3005");
 });

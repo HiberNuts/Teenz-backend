@@ -1,5 +1,4 @@
-import formData from "../models/formDataModel.js";
-
+const formData = require("../models/formDataModel.js");
 const postFormData = async (req, res) => {
   try {
     const data = req.body;
@@ -37,4 +36,4 @@ const getFormDataByID = async (req, res) => {
   }
 };
 
-export { postFormData, getFormData, getFormDataByID };
+module.exports = { postFormData, getFormData, getFormDataByID };
