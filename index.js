@@ -5,6 +5,7 @@ const connectDB = require("./dbConnect");
 const formDataRouter = require("./routes/formDataRoute.js");
 const multer = require("multer");
 const cors = require("cors");
+const autoIncrement = require("mongoose-auto-increment");
 
 //constants
 const app = express();

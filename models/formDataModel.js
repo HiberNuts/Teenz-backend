@@ -1,11 +1,20 @@
 const mongoose = require("mongoose");
+// const autoIncrement = require("mongoose-auto-increment");
+
+// const dotenv = require("dotenv");
+
+// dotenv.config();
+// const uri = process.env.MONGO_URI;
+
+// var connection = mongoose.createConnection(uri);
+// autoIncrement.initialize(connection);
 
 const formDataSchema = new mongoose.Schema(
   {
-    // id: {
-    //   type: Number,
-    //   required: true,
-    // },
+    OrderId: {
+      type: String,
+      required: true,
+    },
     category: {
       type: String,
       required: true,
@@ -45,6 +54,7 @@ const formDataSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+// formDataSchema.plugin(autoIncrement.plugin, { model: "formData", field: "id", prefix: "WC" });
 
 const formData = mongoose.model("formData", formDataSchema);
 
