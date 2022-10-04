@@ -2,13 +2,16 @@ const mongoose = require("mongoose");
 
 const formDataSchema = new mongoose.Schema(
   {
+    // id: {
+    //   type: Number,
+    //   required: true,
+    // },
     category: {
       type: String,
       required: true,
     },
     image: {
       type: String,
-      required: true,
     },
     gender: {
       type: String,
@@ -47,7 +50,6 @@ const formData = mongoose.model("formData", formDataSchema);
 
 formDataSchema.set("toJSON", {
   transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString();
     delete returnedObject.__v;
   },
 });

@@ -7,7 +7,8 @@ const postFormData = async (req, res) => {
 
     if (result) {
       console.log(result);
-      res.json({ status: true });
+      // res.json({ status: true });
+      res.json(result);
     }
   } catch (error) {
     res.json({ status: false });
