@@ -22,6 +22,8 @@ const postFormData = async (req, res) => {
     var finalId = "";
     if (data.category.toLowerCase().includes("wedding")) {
       finalId = `WC${uid}${month}${year}`;
+    } else if (data.category.toLowerCase().includes("garms")) {
+      finalId = `CG${uid}${month}${year}`;
     }
     const result = await formData.create({ OrderId: finalId, ...data });
 
