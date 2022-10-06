@@ -6,6 +6,7 @@ const formDataRouter = require("./routes/formDataRoute.js");
 const multer = require("multer");
 const cors = require("cors");
 const autoIncrement = require("mongoose-auto-increment");
+const sendMailRouter = require("./routes/sendMailRouter");
 
 //constants
 const app = express();
@@ -40,6 +41,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/", formDataRouter);
+app.use("/", sendMailRouter);
 
 //error middleware always should be in last
 // app.use(loginErrorMiddleware);
