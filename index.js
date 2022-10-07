@@ -10,7 +10,7 @@ const sendMailRouter = require("./routes/sendMailRouter");
 
 //constants
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 80;
 
 //additional functions
 app.use(express.json({ limit: "50mb" }));
@@ -49,5 +49,5 @@ app.use("/", sendMailRouter);
 
 //caalling
 app.listen(PORT, () => {
-  console.log("server running at port http://localhost:8080");
+  console.log("server running at port http://localhost:80");
 });
