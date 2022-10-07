@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
 dotenv.config();
-const uri = process.env.MONGO_URI;
+const uri = "mongodb+srvraghavraghav@cluster0.b8toxit.mongodb.netdatabaseretryWrites=true&w=majority";
 
 const connectDB = async () => {
   try {
@@ -10,7 +10,7 @@ const connectDB = async () => {
       useUnifiedTopology: true,
       useNewUrlParser: true,
     });
-   
+
     console.log(`Mongodb connected `);
   } catch (error) {
     console.log(`Inside dbConnecter - Error : ${error.message}`);
