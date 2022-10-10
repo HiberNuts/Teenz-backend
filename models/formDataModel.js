@@ -22,32 +22,38 @@ const formDataSchema = new mongoose.Schema(
     image: {
       type: String,
     },
-    gender: {
+    name: {
       type: String,
-      required: true,
     },
-    fabric: {
+    email: {
       type: String,
-      required: true,
     },
-    clothingChoice: {
+    contact: {
       type: String,
-      required: true,
+    },
+    dDay: {
+      type: String,
     },
     note: {
       type: String,
     },
-    name: {
+    appointDate: {
       type: String,
-      required: true,
     },
-    email: {
+    gender: {
       type: String,
-      required: true,
     },
-    contact: {
+    ageCategory: {
+      type: Number,
+    },
+    typeOfAttire: {
       type: String,
-      required: true,
+    },
+    fabric: {
+      type: String,
+    },
+    designImage: {
+      type: String,
     },
   },
   {

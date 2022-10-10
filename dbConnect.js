@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
 dotenv.config();
-const uri = "mongodb+srv://raghavraghav@cluster0.b8toxit.mongodb.netdatabaseretryWrites=true&w=majority";
+const uri = "mongodb+srv://raghav:raghav@cluster0.b8toxit.mongodb.net/database?retryWrites=true&w=majority";
 
 const connectDB = async () => {
   try {

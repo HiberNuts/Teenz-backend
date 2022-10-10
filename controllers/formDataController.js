@@ -1,15 +1,30 @@
 const formData = require("../models/formDataModel.js");
 const generateUniqueId = require("generate-unique-id");
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
-const ObjectId = mongoose.Types.ObjectId;
+const express = require("express");
 
-const date = new Date();
-console.log(date.getMonth() + 1);
-console.log(date.getFullYear().toString().slice(-2));
+const sendMailRouter = express.Router();
+require("dotenv").config();
+const nodemailer = require("nodemailer");
+const { google } = require("googleapis");
+const OAuth2 = google.auth.OAuth2;
+
+let transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    type: "OAuth2",
+    user: process.env.MAIL_USERNAME,
+
+    clientId: process.env.OAUTH_CLIENTID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+  },
+});
 
 const postFormData = async (req, res) => {
   try {
+    //creating id logic
+
     const data = req.body;
     const uid = generateUniqueId({
       length: 4,
@@ -22,15 +37,34 @@ const postFormData = async (req, res) => {
     var finalId = "";
     if (data.category.toLowerCase().includes("wedding")) {
       finalId = `WC${uid}${month}${year}`;
-    } else if (data.category.toLowerCase().includes("garms")) {
-      finalId = `CG${uid}${month}${year}`;
+    } else if (data.category.toLowerCase().includes("customized")) {
+      finalId = `CD${uid}${month}${year}`;
+    } else if (data.category.toLowerCase().includes("image")) {
+      finalId = `IC${uid}${month}${year}`;
     }
+
     const result = await formData.create({ OrderId: finalId, ...data });
 
     if (result) {
       console.log(result);
-      // res.json({ status: true });
-      res.json(result);
+      res.json({ status: true });
+      // res.json(result);
+
+      const message = {
+        from: "design@tinarosario.com",
+        to: result.email,
+        subject: "Will get back to you shortly",
+        text: "We will get back to you shortly, your request has been noted",
+      };
+
+      transporter.sendMail(message, function (err, data) {
+        if (err) {
+          console.log(err);
+          res.status(400).json({ status: false, message: "ERROR while sending mail" });
+        } else {
+          res.json({ status: true, message: "Email sent" });
+        }
+      });
     }
   } catch (error) {
     res.json({ status: false });
