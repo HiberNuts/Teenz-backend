@@ -21,9 +21,9 @@ formDataRouter.route("/formData/photo/:id").post(upload("image").single("file"),
       return next(error);
     }
     const form = await formData.findById(formId);
-    console.log(form);
+    console.log("here is form", form);
     if (!form) return res.sendStatus(404);
-    form.image = `${url}/${file.path}`;
+    form.designImage = `${url}/${file.path}`;
     await form.save();
     res.send({ form, file });
   } catch (e) {

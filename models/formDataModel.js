@@ -52,7 +52,13 @@ const formDataSchema = new mongoose.Schema(
     fabric: {
       type: String,
     },
+    ownDesign: {
+      type: String,
+    },
     designImage: {
+      type: String,
+    },
+    consPre: {
       type: String,
     },
   },

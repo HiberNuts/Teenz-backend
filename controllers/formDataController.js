@@ -41,23 +41,41 @@ const postFormData = async (req, res) => {
       finalId = `CD${uid}${month}${year}`;
     } else if (data.category.toLowerCase().includes("image")) {
       finalId = `IC${uid}${month}${year}`;
+    } else if (data.category.toLowerCase().includes("pamper")) {
+      finalId = `GP${uid}${month}${year}`;
     }
 
     const result = await formData.create({ OrderId: finalId, ...data });
 
     if (result) {
       console.log(result);
-      res.json({ status: true });
-      // res.json(result);
+      // res.json({ status: true });
+      res.json(result);
 
-      const message = {
+      const message1 = {
         from: "design@tinarosario.com",
         to: result.email,
         subject: "Will get back to you shortly",
         text: "We will get back to you shortly, your request has been noted",
       };
 
-      transporter.sendMail(message, function (err, data) {
+      transporter.sendMail(message1, function (err, data) {
+        if (err) {
+          console.log(err);
+          res.status(400).json({ status: false, message: "ERROR while sending mail" });
+        } else {
+          res.json({ status: true, message: "Email sent" });
+        }
+      });
+
+      const message2 = {
+        from: "raghavjindal0212@gmail.com",
+        to: "design@tinarosario.com",
+        subject: "Got a new order",
+        text: `Got a new order with follwoing data ${result}`,
+      };
+
+      transporter.sendMail(message2, function (err, data) {
         if (err) {
           console.log(err);
           res.status(400).json({ status: false, message: "ERROR while sending mail" });
