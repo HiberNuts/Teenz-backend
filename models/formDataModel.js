@@ -31,7 +31,7 @@ const formDataSchema = new mongoose.Schema(
     contact: {
       type: String,
     },
-    dDay: {
+    dday: {
       type: String,
     },
     note: {
