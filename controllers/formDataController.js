@@ -62,7 +62,7 @@ const postFormData = async (req, res) => {
       transporter.sendMail(message1, function (err, data) {
         if (err) {
           console.log(err);
-          res.status(400).json({ status: false, message: "ERROR while sending mail" });
+          res.status(200).json({ status: false, message: "ERROR while sending mail" });
         } else {
           res.json({ status: true, message: "Email sent" });
         }
@@ -78,7 +78,7 @@ const postFormData = async (req, res) => {
       transporter.sendMail(message2, function (err, data) {
         if (err) {
           console.log(err);
-          res.status(400).json({ status: false, message: "ERROR while sending mail" });
+          res.status(200).json({ status: false, message: "ERROR while sending mail" });
         } else {
           res.json({ status: true, message: "Email sent" });
         }
