@@ -16,6 +16,9 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json({ limit: "50mb" }));
 app.disable("x-powered-by");
 // app.use(express.urlencoded());
+app.engine("html", require("ejs").renderFile);
+app.set("view engine", "html");
+app.set("view engine", "ejs");
 dotenv.config();
 app.use(cors());
 

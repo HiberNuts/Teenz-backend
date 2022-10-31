@@ -1,0 +1,38 @@
+body{
+    height: 600px;
+    width: 100%;
+    background-image: url("./bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.box{
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.61);
+    font-size: 15px;
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+
+}
+.links{
+    display: flex;
+    flex-direction: column;
+}
+
+.single{
+    display: flex;
+}
+.footer>img{
+    width: 250px;
+}
+
+.single>img{
+    margin-right: 10px;
+}

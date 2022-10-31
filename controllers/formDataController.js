@@ -51,38 +51,54 @@ const postFormData = async (req, res) => {
       console.log(result);
       // res.json({ status: true });
       res.json(result);
+      if (result?.ownDesign!="true") {
+        const message1 = {
+          from: "design@tinarosario.com",
+          to: result.email,
+          subject: "Will get back to you shortly",
+          text: "We will get back to you shortly, your request has been noted",
+        };
 
-      const message1 = {
-        from: "design@tinarosario.com",
-        to: result.email,
-        subject: "Will get back to you shortly",
-        text: "We will get back to you shortly, your request has been noted",
-      };
+        transporter.sendMail(message1, function (err, data) {
+          if (err) {
+            console.log(err);
+            res.status(200).json({ status: false, message: "ERROR while sending mail" });
+          } else {
+            res.json({ status: true, message: "Email sent" });
+          }
+        });
 
-      transporter.sendMail(message1, function (err, data) {
-        if (err) {
-          console.log(err);
-          res.status(200).json({ status: false, message: "ERROR while sending mail" });
-        } else {
-          res.json({ status: true, message: "Email sent" });
-        }
-      });
+        const message2 = {
+          from: "raghavjindal0212@gmail.com",
+          to: "design@tinarosario.com",
+          subject: "Got a new order",
+          text: `Got a new order with follwoing data: \n
+          OrderId:${result.OrderId} \n
+          Category: ${result.category}\n
+          Name: ${result.name} \n
+          email: ${result.email}\n
+          contact:${result.contact} \n
+          Note: ${result.note}\n
+          gender: ${result?.gender} \n
+          fabric: ${result?.fabric}\n
+          dday: ${result?.dday}\n
+          appointDate: ${result?.appointDate}\n
+          ageCategory: ${result?.ageCategory}\n
+          typeOfAttire: ${result?.typeOfAttire}\n
+          ownDesign: ${result?.ownDesign}\n
+          Consulting Perference: ${result?.consPre}\n
+          `,
+        };
 
-      const message2 = {
-        from: "raghavjindal0212@gmail.com",
-        to: "design@tinarosario.com",
-        subject: "Got a new order",
-        text: `Got a new order with follwoing data ${result}`,
-      };
-
-      transporter.sendMail(message2, function (err, data) {
-        if (err) {
-          console.log(err);
-          res.status(200).json({ status: false, message: "ERROR while sending mail" });
-        } else {
-          res.json({ status: true, message: "Email sent" });
-        }
-      });
+        transporter.sendMail(message2, function (err, data) {
+          if (err) {
+            console.log(err);
+            res.status(200).json({ status: false, message: "ERROR while sending mail" });
+          } else {
+            res.json({ status: true, message: "Email sent" });
+          }
+        });
+      }
     }
   } catch (error) {
     res.json({ status: false });

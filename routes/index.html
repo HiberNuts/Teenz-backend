@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mail</title>
+  </head>
+  <style>
+    body {
+      height: 600px;
+      width: 100%;
+      background-image: url("./bg.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+    }
+
+    .box {
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.61);
+      font-size: 15px;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .single {
+      display: flex;
+    }
+    .footer > img {
+      width: 250px;
+    }
+
+    .single > img {
+      margin-right: 10px;
+    }
+  </style>
+  <body>
+    <div class="box">
+      <h3>Dear {userName},</h3>
+      <br />
+      <br />
+      Welcome to the family of <b>“The Design House”</b> by Tina Rosario. Appreciate your confidence in us
+      <br />
+      <br />
+      We received you enquiry, our designer will contact you to discuss further.
+      <br />
+      <br />
+      Get ready !!! We are excited to grace you with an attire that befits you the best.
+      <br />
+      <br />
+
+      Thank you,
+      <div class="footer">
+        <img
+          src="https://avatars.mds.yandex.net/i?id=611ac8b43cb56bd7c3f79972cfab0cd428229524-6961846-images-thumbs&n=13"
+        />
+        <div class="links">
+          <div class="single">
+            <img src="../mailhtml/phone.svg" />
+            <p>+91-7200060540</p>
+          </div>
+          <div class="single">
+            <img src="../mailhtml/mail.svg" />
+            <p>design@tinarosario.com</p>
+          </div>
+          <div class="single">
+            <img src="../mailhtml/insta.svg" />
+            <p>tina_rosario_the_design_house</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
