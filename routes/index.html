@@ -7,10 +7,17 @@
     <title>Mail</title>
   </head>
   <style>
+    html {
+      background-color: transparent;
+      background: transparent;
+    }
     body {
       height: 600px;
       width: 100%;
-      background-image: url("./bg.svg");
+
+      background-color: transparent;
+      background: transparent;
+
       background-repeat: no-repeat;
       background-size: cover;
       display: flex;
@@ -20,6 +27,7 @@
     }
 
     .box {
+      position: absolute;
       border-radius: 20px;
       padding: 20px;
       box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.61);
@@ -28,6 +36,7 @@
     .footer {
       display: flex;
       justify-content: space-between;
+      align-items: flex-end;
     }
     .links {
       display: flex;
@@ -36,18 +45,32 @@
 
     .single {
       display: flex;
+      justify-content: flex-start;
+      align-items: center;
     }
     .footer > img {
-      width: 250px;
+      width: 200px;
+      height: 50px;
     }
 
     .single > img {
       margin-right: 10px;
+      width: 20px;
+      height: 20px;
+    }
+    .bg {
+      position: absolute;
     }
   </style>
   <body>
+    <img
+      class="bg"
+      src="https://drive.google.com/uc?export=view&id=1P3wLujZD0cbA0avu0jMeb6C_JGclDYaB"
+      alt="drive image"
+    />
+
     <div class="box">
-      <h3>Dear {userName},</h3>
+      <h3>Dear {{userName}},</h3>
       <br />
       <br />
       Welcome to the family of <b>“The Design House”</b> by Tina Rosario. Appreciate your confidence in us
@@ -62,20 +85,18 @@
 
       Thank you,
       <div class="footer">
-        <img
-          src="https://avatars.mds.yandex.net/i?id=611ac8b43cb56bd7c3f79972cfab0cd428229524-6961846-images-thumbs&n=13"
-        />
+        <img src="https://drive.google.com/uc?export=view&id=1QjlQR7tPkEqfgv8oKy4-PnS8bLTd6K-V" alt="drive image" />
         <div class="links">
           <div class="single">
-            <img src="../mailhtml/phone.svg" />
+            <img src="https://drive.google.com/uc?export=view&id=1KnT6mq7fc87b-gi06tYp8ZBF9JAjQArv" />
             <p>+91-7200060540</p>
           </div>
           <div class="single">
-            <img src="../mailhtml/mail.svg" />
+            <img src="https://drive.google.com/uc?export=view&id=1x9sWH07LT6dPfGYxbCm2thEJBUGHQWQX" />
             <p>design@tinarosario.com</p>
           </div>
           <div class="single">
-            <img src="../mailhtml/insta.svg" />
+            <img src="https://drive.google.com/uc?export=view&id=1BxdSrAY-sHOmJAdn9kibG4GTD4tXSJd3" />
             <p>tina_rosario_the_design_house</p>
           </div>
         </div>

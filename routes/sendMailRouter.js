@@ -2,12 +2,16 @@ const express = require("express");
 const EmailTemplate = require("email-templates");
 const path = require("path");
 const fs = require("fs");
+const Hogan = require("hogan.js");
 
 require("dotenv").config();
 const sendMailRouter = express.Router();
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
+
+const template = fs.readFileSync("./routes/index2.hjs", "utf-8");
+const compiledTemplate = Hogan.compile(template);
 
 let transporter = nodemailer.createTransport({
   service: "gmail",
@@ -31,7 +35,7 @@ let transporter = nodemailer.createTransport({
 
 sendMailRouter.post("/mail", (req, res) => {
   const data = req.body;
-  const htmlStream = fs.createReadStream("routes/index.html");
+  // const htmlStream = fs.createReadStream("routes/index.html");
   // const message = {
   //   from: data.from,
   //   to: data.to,
@@ -47,17 +51,17 @@ sendMailRouter.post("/mail", (req, res) => {
   //     res.json({ status: true, message: "Email sent to tina" });
   //   }
   // });
-  const templateDir = "../mailhtml/index.ejs";
-  const testMailTemplate = new EmailTemplate();
-  const locals = {
-    userName: "XYZ", //dynamic data for bind into the template
-  };
+  // const templateDir = "../mailhtml/index.ejs";
+  // const testMailTemplate = new EmailTemplate();
+  // const locals = {
+  //   userName: "XYZ", //dynamic data for bind into the template
+  // };
   const message2 = {
     from: data.to,
     to: data.from,
     subject: data.subject,
     text: data.text,
-    html: htmlStream,
+    html: compiledTemplate.render({ userName: data.userName }),
   };
 
   // testMailTemplate.render("../mailhtml/index.ejs", locals, function (err, temp) {
