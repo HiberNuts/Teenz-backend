@@ -8,6 +8,11 @@ require("dotenv").config();
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
+const fs = require("fs");
+const Hogan = require("hogan.js");
+
+const template = fs.readFileSync("./routes/index2.hjs", "utf-8");
+const compiledTemplate = Hogan.compile(template);
 
 let transporter = nodemailer.createTransport({
   service: "gmail",
@@ -51,20 +56,21 @@ const postFormData = async (req, res) => {
       console.log(result);
       // res.json({ status: true });
       res.json(result);
-      if (result?.ownDesign!="true") {
+      if (result?.ownDesign != "true") {
         const message1 = {
-          from: "design@tinarosario.com",
+          from: "raghavjindal0212@gmail.com",
           to: result.email,
-          subject: "Will get back to you shortly",
-          text: "We will get back to you shortly, your request has been noted",
-        };
+          subject: "Thankyou for contacting The Design House",
 
+          html: compiledTemplate.render({ userName: result.name }),
+        };
         transporter.sendMail(message1, function (err, data) {
           if (err) {
             console.log(err);
-            res.status(200).json({ status: false, message: "ERROR while sending mail" });
+            res.status(400).json({ status: false, message: "ERROR while sending mail" });
           } else {
-            res.json({ status: true, message: "Email sent" });
+            console.log("email sent to User");
+            res.json({ status: true, message: "Email sent to user" });
           }
         });
 
@@ -95,6 +101,7 @@ const postFormData = async (req, res) => {
             console.log(err);
             res.status(200).json({ status: false, message: "ERROR while sending mail" });
           } else {
+            console.log("email sent to Tina");
             res.json({ status: true, message: "Email sent" });
           }
         });

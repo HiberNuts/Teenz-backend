@@ -35,27 +35,23 @@ let transporter = nodemailer.createTransport({
 
 sendMailRouter.post("/mail", (req, res) => {
   const data = req.body;
-  // const htmlStream = fs.createReadStream("routes/index.html");
-  // const message = {
-  //   from: data.from,
-  //   to: data.to,
-  //   subject: data.subject,
-  //   text: data.text,
-  // };
 
-  // transporter.sendMail(message, function (err, data) {
-  //   if (err) {
-  //     console.log(err);
-  //     res.status(400).json({ status: false, message: "ERROR while sending mail" });
-  //   } else {
-  //     res.json({ status: true, message: "Email sent to tina" });
-  //   }
-  // });
-  // const templateDir = "../mailhtml/index.ejs";
-  // const testMailTemplate = new EmailTemplate();
-  // const locals = {
-  //   userName: "XYZ", //dynamic data for bind into the template
-  // };
+  const message = {
+    from: data.from,
+    to: data.to,
+    subject: data.subject,
+    text: data.text,
+  };
+
+  transporter.sendMail(message, function (err, data) {
+    if (err) {
+      console.log(err);
+      res.status(400).json({ status: false, message: "ERROR while sending mail" });
+    } else {
+      console.log("email sent to User");
+      res.json({ status: true, message: "Email sent to tina" });
+    }
+  });
   const message2 = {
     from: data.to,
     to: data.from,
@@ -63,34 +59,12 @@ sendMailRouter.post("/mail", (req, res) => {
     text: data.text,
     html: compiledTemplate.render({ userName: data.userName }),
   };
-
-  // testMailTemplate.render("../mailhtml/index.ejs", locals, function (err, temp) {
-  //   if (err) {
-  //     console.log("error", err);
-  //   } else {
-  //     transporter.sendMail(
-  //       {
-  //         from: data.to,
-  //         to: data.from,
-  //         subject: "test mail",
-  //         text: temp.ejs,
-  //         html: temp.ejs,
-  //       },
-  //       function (error, info) {
-  //         if (error) {
-  //           console.log(error);
-  //         }
-  //         console.log("Message sent: " + info.response);
-  //       }
-  //     );
-  //   }
-  // });
-
   transporter.sendMail(message2, function (err, data) {
     if (err) {
       console.log(err);
       res.status(400).json({ status: false, message: "ERROR while sending mail" });
     } else {
+      console.log("email sent to Tina");
       res.json({ status: true, message: "Email sent to user" });
     }
   });

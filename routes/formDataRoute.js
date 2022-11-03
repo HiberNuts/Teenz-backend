@@ -44,6 +44,21 @@ formDataRouter.route("/formData/photo/:id").post(upload("image").single("file"),
     const result = await form.save();
     console.log(result);
     if (result) {
+      const message1 = {
+        from: "raghavjindal0212@gmail.com",
+        to: result.email,
+        subject: "Thankyou for contacting The Design House",
+        html: compiledTemplate.render({ userName: result.name }),
+      };
+      transporter.sendMail(message1, function (err, data) {
+        if (err) {
+          console.log(err);
+          res.status(400).json({ status: false, message: "ERROR while sending mail" });
+        } else {
+          console.log("email sent to user");
+          res.json({ status: true, message: "Email sent to user" });
+        }
+      });
       const message2 = {
         from: "raghavjindal0212@gmail.com",
         to: "design@tinarosario.com",
@@ -72,6 +87,7 @@ formDataRouter.route("/formData/photo/:id").post(upload("image").single("file"),
           console.log(err);
           res.status(200).json({ status: false, message: "ERROR while sending mail" });
         } else {
+          console.log("email sent to Tina");
           res.json({ status: true, message: "Email sent" });
         }
       });
