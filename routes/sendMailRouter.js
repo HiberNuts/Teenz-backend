@@ -48,14 +48,14 @@ sendMailRouter.post("/mail", (req, res) => {
       console.log(err);
       res.status(400).json({ status: false, message: "ERROR while sending mail" });
     } else {
-      console.log("email sent to User");
+      console.log("email sent to Tina");
       res.json({ status: true, message: "Email sent to tina" });
     }
   });
   const message2 = {
     from: data.to,
     to: data.from,
-    subject: data.subject,
+    subject: "Thank you for contacting The Design House by Tina Rosario",
     text: data.text,
     html: compiledTemplate.render({ userName: data.userName }),
   };
@@ -64,7 +64,7 @@ sendMailRouter.post("/mail", (req, res) => {
       console.log(err);
       res.status(400).json({ status: false, message: "ERROR while sending mail" });
     } else {
-      console.log("email sent to Tina");
+      console.log("email sent to User");
       res.json({ status: true, message: "Email sent to user" });
     }
   });

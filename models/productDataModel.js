@@ -2,10 +2,16 @@ const mongoose = require("mongoose");
 
 const productDataSchema = new mongoose.Schema(
   {
+    productName: {
+      type: "string",
+    },
     name: {
       type: "string",
     },
     contact: {
+      type: "string",
+    },
+    email: {
       type: "string",
     },
   },
