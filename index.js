@@ -8,6 +8,7 @@ const cors = require("cors");
 const autoIncrement = require("mongoose-auto-increment");
 const sendMailRouter = require("./routes/sendMailRouter");
 const productDataRouter = require("./routes/productDataRoute");
+const feedbackRouter = require("./routes/feedbackDataRoute");
 
 //constants
 const app = express();
@@ -46,6 +47,7 @@ app.get("/", (req, res) => {
 
 app.use("/", formDataRouter);
 app.use("/", productDataRouter);
+app.use("/", feedbackRouter);
 app.use("/", sendMailRouter);
 
 //error middleware always should be in last
