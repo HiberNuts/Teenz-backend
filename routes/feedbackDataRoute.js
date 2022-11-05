@@ -59,6 +59,7 @@ feedbackRouter.route("/feedback/photo/:id").post(upload("feedback").single("file
       timeline: ${result?.timeline}\n
       response: ${result?.response}\n
       overall: ${result?.overall}\n
+      image: ${result?.image}
       `,
       };
 

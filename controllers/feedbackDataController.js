@@ -34,7 +34,7 @@ const postFeedbackData = async (req, res) => {
 
     if (result) {
       res.json(result);
-      if (result.image == "") {
+      if (result.image !== "yes") {
         const message2 = {
           from: "raghavjindal0212@gmail.com",
           to: "design@tinarosario.com",
