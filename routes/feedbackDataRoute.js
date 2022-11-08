@@ -44,7 +44,7 @@ feedbackRouter.route("/feedback/photo/:id").post(upload("feedback").single("file
     console.log(result);
     if (result) {
       const message2 = {
-        from: "raghavjindal0212@gmail.com",
+        from: "design@tinarosario.com",
         to: "design@tinarosario.com",
         subject: "Received a new feedback",
         text: `Data : \n

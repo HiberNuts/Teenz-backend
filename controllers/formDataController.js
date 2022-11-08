@@ -87,7 +87,7 @@ const postFormData = async (req, res) => {
           Note: ${result.note}\n
           gender: ${result?.gender} \n
           fabric: ${result?.fabric}\n
-          dday: ${result?.dday}\n
+          Wedding day: ${result?.dday}\n
           appointDate: ${result?.appointDate}\n
           ageCategory: ${result?.ageCategory}\n
           typeOfAttire: ${result?.typeOfAttire}\n

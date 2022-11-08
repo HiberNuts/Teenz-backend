@@ -25,20 +25,12 @@ let transporter = nodemailer.createTransport({
   },
 });
 
-// let mailOptions = {
-//   // from: "raghavjindal0212@gmail.com",
-//   from: "ragh.20fit34@gct.ac.in",
-//   to: "lovlyraghav1@gmail.com",
-//   subject: "Tina rosario project",
-//   text: "Hi from your nodemailer project",
-// };
-
 sendMailRouter.post("/mail", (req, res) => {
   const data = req.body;
 
   const message = {
     from: data.from,
-    to: data.to,
+    to: "design@tinarosario.com",
     subject: data.subject,
     text: data.text,
   };
@@ -53,7 +45,7 @@ sendMailRouter.post("/mail", (req, res) => {
     }
   });
   const message2 = {
-    from: data.to,
+    from: "design@tinarosario.com",
     to: data.from,
     subject: "Thank you for contacting The Design House by Tina Rosario",
     text: data.text,

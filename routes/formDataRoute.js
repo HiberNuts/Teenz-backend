@@ -10,6 +10,11 @@ require("dotenv").config();
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
+const fs = require("fs");
+const Hogan = require("hogan.js");
+
+const template = fs.readFileSync("./routes/index2.hjs", "utf-8");
+const compiledTemplate = Hogan.compile(template);
 
 let transporter = nodemailer.createTransport({
   service: "gmail",
@@ -44,23 +49,8 @@ formDataRouter.route("/formData/photo/:id").post(upload("image").single("file"),
     const result = await form.save();
     console.log(result);
     if (result) {
-      const message1 = {
-        from: "raghavjindal0212@gmail.com",
-        to: result.email,
-        subject: "Thankyou for contacting The Design House",
-        html: compiledTemplate.render({ userName: result.name }),
-      };
-      transporter.sendMail(message1, function (err, data) {
-        if (err) {
-          console.log(err);
-          res.status(400).json({ status: false, message: "ERROR while sending mail" });
-        } else {
-          console.log("email sent to user");
-          res.json({ status: true, message: "Email sent to user" });
-        }
-      });
       const message2 = {
-        from: "raghavjindal0212@gmail.com",
+        from: "design@tinarosario.com",
         to: "design@tinarosario.com",
         subject: "Got a new order",
         text: `Got a new order with follwoing data: \n
@@ -72,7 +62,7 @@ formDataRouter.route("/formData/photo/:id").post(upload("image").single("file"),
       Note: ${result.note}\n
       gender: ${result?.gender} \n
       fabric: ${result?.fabric}\n
-      dday: ${result?.dday}\n
+      wedding day: ${result?.dday}\n
       appointDate: ${result?.appointDate}\n
       ageCategory: ${result?.ageCategory}\n
       typeOfAttire: ${result?.typeOfAttire}\n
@@ -92,6 +82,22 @@ formDataRouter.route("/formData/photo/:id").post(upload("image").single("file"),
         }
       });
     }
+    const message1 = {
+      from: "design@tinarosario.com",
+      to: result.email,
+      subject: "Thankyou for contacting The Design House",
+      html: compiledTemplate.render({ userName: result.name }),
+    };
+    transporter.sendMail(message1, function (err, data) {
+      if (err) {
+        console.log(err);
+        res.status(400).json({ status: false, message: "ERROR while sending mail" });
+      } else {
+        console.log("email sent to user");
+
+        res.json({ status: true, message: "Email sent to user" });
+      }
+    });
 
     res.send({ form, file });
   } catch (e) {
