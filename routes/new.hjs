@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta charset="UTF-8" /><meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Mail</title></head><body
+    style="align-content:center;align-items:center;background:0 0;background-color:transparent;background-repeat:no-repeat;background-size:cover;display:flex;height:600px;justify-content:center;width:100%"
+  ><style></style><img
+      class="bg"
+      src="https://drive.google.com/uc?export=view&amp;amp;id=1P3wLujZD0cbA0avu0jMeb6C_JGclDYaB"
+      alt="drive image"
+      style="position:absolute"
+    /><div
+      class="box"
+      style="border-radius:20px;box-shadow:0 2px 5px 0 rgba(0,0,0,.61);font-size:15px;padding:20px;position:absolute"
+    ><h3>Dear {{userName}},</h3><br /><br />Welcome to the family of
+      <b>“The Design House”</b>
+      by Tina Rosario. Appreciate your confidence in us<br /><br />We received you enquiry, our designer will contact
+      you to discuss further.<br /><br />Get ready !!! We are excited to grace you with an attire that befits you the
+      best.<br /><br />Thank you,<div
+        class="footer"
+        style="align-items:flex-end;display:flex;justify-content:space-between"
+      ><img
+          src="https://drive.google.com/uc?export=view&amp;amp;id=1QjlQR7tPkEqfgv8oKy4-PnS8bLTd6K-V"
+          alt="drive image"
+          style="height:50px;width:200px"
+        /><div class="links" style="display:flex;flex-direction:column"><div
+            class="single"
+            style="align-items:center;display:flex;justify-content:flex-start"
+          ><img
+              src="https://drive.google.com/uc?export=view&amp;amp;id=1KnT6mq7fc87b-gi06tYp8ZBF9JAjQArv"
+              style="height:20px;margin-right:10px;width:20px"
+            /><p>+91-7200060540</p></div><div
+            class="single"
+            style="align-items:center;display:flex;justify-content:flex-start"
+          ><img
+              src="https://drive.google.com/uc?export=view&amp;amp;id=1x9sWH07LT6dPfGYxbCm2thEJBUGHQWQX"
+              style="height:20px;margin-right:10px;width:20px"
+            /><p>design@tinarosario.com</p></div><div
+            class="single"
+            style="align-items:center;display:flex;justify-content:flex-start"
+          ><img
+              src="https://drive.google.com/uc?export=view&amp;amp;id=1BxdSrAY-sHOmJAdn9kibG4GTD4tXSJd3"
+              style="height:20px;margin-right:10px;width:20px"
+            /><p>tina_rosario_the_design_house</p></div></div></div></div></body></html>

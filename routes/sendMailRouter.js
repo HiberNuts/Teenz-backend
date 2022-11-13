@@ -31,7 +31,7 @@ sendMailRouter.post("/mail", (req, res) => {
   const message = {
     from: data.from,
     to: "design@tinarosario.com",
-    subject: data.subject,
+    subject: `Contact from ${data.from}`,
     text: data.text,
   };
 
