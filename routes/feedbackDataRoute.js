@@ -51,7 +51,7 @@ feedbackRouter.route("/feedback/photo/:id").post(upload("feedback").single("file
       name:${result.name} \n
       email: ${result.email}\n
       feedback: ${result.feedback} \n
-      email: ${result.email}\n
+      
       design:${result.design} \n
       creativity: ${result.creativity}\n
       fit: ${result?.fit} \n

@@ -38,8 +38,8 @@ const postFeedbackData = async (req, res) => {
         const message2 = {
           from: "raghavjindal0212@gmail.com",
           to: "design@tinarosario.com",
-          subject: "New Feedback",
-          text: `Feedback Details: \n
+          subject: "Received a new feedback",
+          text: `Data: \n
             \n
             Name: ${result.name}
             \n
