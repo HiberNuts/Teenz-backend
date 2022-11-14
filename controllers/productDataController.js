@@ -35,7 +35,7 @@ const postProductData = async (req, res) => {
     if (result) {
       res.json(result);
       const message1 = {
-        from: "raghavjindal0212@gmail.com",
+        from: "design@tinarosario.com",
         to: result.email,
         subject: "Thankyou for contacting The Design House",
 
@@ -52,7 +52,7 @@ const postProductData = async (req, res) => {
       });
 
       const message2 = {
-        from: "raghavjindal0212@gmail.com",
+        from: "design@tinarosario.com",
         to: "design@tinarosario.com",
         subject: "Got a new enquiry from products",
         text: `Product Details: \n
@@ -62,8 +62,6 @@ const postProductData = async (req, res) => {
         Name: ${result.name}
         \n
         Contact:${result.contact}
-        \n
-        Email:${result.email}
         `,
       };
 

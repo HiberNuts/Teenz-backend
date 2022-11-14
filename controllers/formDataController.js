@@ -49,6 +49,16 @@ const postFormData = async (req, res) => {
     } else if (data.category.toLowerCase().includes("pamper")) {
       finalId = `GP${uid}${month}${year}`;
     }
+    let text = "";
+    if (data.category.toLowerCase().includes("wedding")) {
+      text = "Wedding";
+    } else if (data.category.toLowerCase().includes("customized")) {
+      text = "Customized design";
+    } else if (data.category.toLowerCase().includes("image")) {
+      text = "Image consulting";
+    } else if (data.category.toLowerCase().includes("pamper")) {
+      text = "Get pampered";
+    }
 
     const result = await formData.create({ OrderId: finalId, ...data });
 
@@ -74,25 +84,26 @@ const postFormData = async (req, res) => {
           }
         });
 
+        if (result.name) {
+        }
+
         const message2 = {
           from: "raghavjindal0212@gmail.com",
           to: "design@tinarosario.com",
-          subject: "Got a new order",
-          text: `Got a new order with follwoing data: \n
-          OrderId:${result.OrderId} \n
-          Category: ${result.category}\n
-          Name: ${result.name} \n
-          email: ${result.email}\n
-          contact:${result.contact} \n
-          Note: ${result.note}\n
-          gender: ${result?.gender} \n
-          fabric: ${result?.fabric}\n
-          Wedding day: ${result?.dday}\n
-          appointDate: ${result?.appointDate}\n
-          ageCategory: ${result?.ageCategory}\n
-          typeOfAttire: ${result?.typeOfAttire}\n
-          ownDesign: ${result?.ownDesign}\n
-          Consulting Perference: ${result?.consPre}\n
+          subject: `${text} enquiry`,
+          text: `Got a new order with follwoing data:\n\n${result.OrderId ? `OrderId: ${result.OrderId}\n` : ""}${
+            result.category ? `Category: ${result.category}\n` : ""
+          }${result.name ? `\nName: ${result.name}\n` : ""}${result.email ? `Email: ${result.email}\n` : ""}${
+            result.contact ? `Contact: ${result.contact}\n` : ""
+          }${result.note ? `Note: ${result.note}` : ""}${result.gender ? `Gender: ${result.gender}\n` : ""}${
+            result.fabric ? `Fabric: ${result.fabric}\n` : ""
+          }${result.dday ? `Wedding day: ${result.dday}` : ""}${
+            result.appointDate ? `Appoint day: ${result.appointDate}\n` : ""
+          }${result.ageCategory ? `Age Category: ${result.ageCategory}\n` : ""}${
+            result.typeOfAttire ? `Type of attire: ${result.typeOfAttire}\n` : ""
+          }${result.ownDesign ? `Own design: ${result.ownDesign}\n` : ""}${
+            result.consPre ? `Consulting preference: ${result.consPre}\n` : ""
+          }
           `,
         };
 
