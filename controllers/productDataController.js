@@ -35,9 +35,12 @@ const postProductData = async (req, res) => {
     if (result) {
       res.json(result);
       const message1 = {
-        from: "design@tinarosario.com",
+        from: {
+          name: "Tina Rosario",
+          address: "design@tinarosario.com",
+        },
         to: result.email,
-        subject: "Thankyou for contacting The Design House",
+        subject: "Thank you for contacting The Design House by Tina Rosario",
 
         html: compiledTemplate.render({ userName: result.name }),
       };
@@ -52,7 +55,10 @@ const postProductData = async (req, res) => {
       });
 
       const message2 = {
-        from: "design@tinarosario.com",
+        from: {
+          name: "Tina Rosario Website",
+          address: "design@tinarosario.com",
+        },
         to: "design@tinarosario.com",
         subject: "Got a new enquiry from products",
         text: `Product Details: \n

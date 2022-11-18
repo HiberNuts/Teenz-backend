@@ -36,7 +36,10 @@ const postFeedbackData = async (req, res) => {
       res.json(result);
       if (result.image !== "yes") {
         const message2 = {
-          from: "raghavjindal0212@gmail.com",
+          from: {
+            name: "Tina Rosario Website",
+            address: "design@tinarosario.com",
+          },
           to: "design@tinarosario.com",
           subject: "Received a new feedback",
           text: `Data: \n

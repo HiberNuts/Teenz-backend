@@ -68,9 +68,12 @@ const postFormData = async (req, res) => {
       res.json(result);
       if (result?.ownDesign != "true") {
         const message1 = {
-          from: "raghavjindal0212@gmail.com",
+          from: {
+            name: "Tina Rosario",
+            address: "design@tinarosario.com",
+          },
           to: result.email,
-          subject: "Thankyou for contacting The Design House",
+          subject: "Thank you for contacting The Design House by Tina Rosario",
 
           html: compiledTemplate.render({ userName: result.name }),
         };
@@ -88,16 +91,19 @@ const postFormData = async (req, res) => {
         }
 
         const message2 = {
-          from: "raghavjindal0212@gmail.com",
+          from: {
+            name: "Tina Rosario Website",
+            address: "design@tinarosario.com",
+          },
           to: "design@tinarosario.com",
           subject: `${text} enquiry`,
-          text: `Got a new order with follwoing data:\n\n${result.OrderId ? `OrderId: ${result.OrderId}\n` : ""}${
+          text: `Got a new order with following data:\n\n${result.OrderId ? `OrderId: ${result.OrderId}\n` : ""}${
             result.category ? `Category: ${result.category}\n` : ""
           }${result.name ? `\nName: ${result.name}\n` : ""}${result.email ? `Email: ${result.email}\n` : ""}${
             result.contact ? `Contact: ${result.contact}\n` : ""
-          }${result.note ? `Note: ${result.note}` : ""}${result.gender ? `Gender: ${result.gender}\n` : ""}${
+          }${result.note ? `Note: ${result.note}\n` : ""}${result.gender ? `Gender: ${result.gender}\n` : ""}${
             result.fabric ? `Fabric: ${result.fabric}\n` : ""
-          }${result.dday ? `Wedding day: ${result.dday}` : ""}${
+          }${result.dday ? `Wedding day: ${result.dday}\n` : ""}${
             result.appointDate ? `Appoint day: ${result.appointDate}\n` : ""
           }${result.ageCategory ? `Age Category: ${result.ageCategory}\n` : ""}${
             result.typeOfAttire ? `Type of attire: ${result.typeOfAttire}\n` : ""

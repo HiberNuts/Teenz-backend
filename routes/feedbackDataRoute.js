@@ -44,7 +44,10 @@ feedbackRouter.route("/feedback/photo/:id").post(upload("feedback").single("file
     console.log(result);
     if (result) {
       const message2 = {
-        from: "design@tinarosario.com",
+        from: {
+          name: "Tina Rosario Website",
+          address: "design@tinarosario.com",
+        },
         to: "design@tinarosario.com",
         subject: "Received a new feedback",
         text: `Data : \n

@@ -29,7 +29,10 @@ sendMailRouter.post("/mail", (req, res) => {
   const data = req.body;
 
   const message = {
-    from: data.from,
+    from: {
+      name: "Tina Rosario Website",
+      address: "design@tinarosario.com",
+    },
     to: "design@tinarosario.com",
     subject: `Contact from ${data.from}`,
     text: data.text,
@@ -45,7 +48,10 @@ sendMailRouter.post("/mail", (req, res) => {
     }
   });
   const message2 = {
-    from: "design@tinarosario.com",
+    from: {
+      name: "Tina Rosario",
+      address: "design@tinarosario.com",
+    },
     to: data.from,
     subject: "Thank you for contacting The Design House by Tina Rosario",
     text: data.text,
