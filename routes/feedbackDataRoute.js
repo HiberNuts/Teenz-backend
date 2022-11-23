@@ -27,7 +27,8 @@ feedbackRouter.route("/feedback").post(feedback.postFeedbackData);
 feedbackRouter.route("/feedback").get(feedback.getFeedbackData);
 
 feedbackRouter.route("/feedback/photo/:id").post(upload("feedback").single("file"), async (req, res, next) => {
-  const url = `${req.protocol}://${req.get("host")}`;
+  // const url = `${req.protocol}://${req.get("host")}`;
+  const url = "http://3.88.157.171:8080";
   const { file } = req;
   const feedbackID = req.params.id;
   try {

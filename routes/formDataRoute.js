@@ -33,7 +33,8 @@ formDataRouter.route("/formData").get(form.getFormData);
 formDataRouter.route("/formDataById/:id").get(form.getFormDataByID);
 
 formDataRouter.route("/formData/photo/:id").post(upload("image").single("file"), async (req, res, next) => {
-  const url = `${req.protocol}://${req.get("host")}`;
+  // const url = `${req.protocol}://${req.get("host")}`;
+  const url = "http://3.88.157.171:8080";
   const { file } = req;
   const formId = req.params.id;
   try {
