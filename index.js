@@ -41,14 +41,14 @@ app.use(express.static(__dirname + "/public"));
 app.use("/uploads", express.static("uploads"));
 
 //routes
-app.get("/", (req, res) => {
+app.get("/route", (req, res) => {
   res.send("hello");
 });
 
-app.use("/", formDataRouter);
-app.use("/", productDataRouter);
-app.use("/", feedbackRouter);
-app.use("/", sendMailRouter);
+app.use("/route/", formDataRouter);
+app.use("/route/", productDataRouter);
+app.use("/route/", feedbackRouter);
+app.use("/route/", sendMailRouter);
 
 //error middleware always should be in last
 // app.use(loginErrorMiddleware);
