@@ -34,25 +34,25 @@ const postProductData = async (req, res) => {
 
     if (result) {
       res.json(result);
-      const message1 = {
-        from: {
-          name: "Tina Rosario",
-          address: "design@tinarosario.com",
-        },
-        to: result.email,
-        subject: "Thank you for contacting The Design House by Tina Rosario",
+      // const message1 = {
+      //   from: {
+      //     name: "Tina Rosario",
+      //     address: "design@tinarosario.com",
+      //   },
+      //   to: result.email,
+      //   subject: "Thank you for contacting The Design House by Tina Rosario",
 
-        html: compiledTemplate.render({ userName: result.name }),
-      };
-      transporter.sendMail(message1, function (err, data) {
-        if (err) {
-          console.log(err);
-          res.status(400).json({ status: false, message: "ERROR while sending mail" });
-        } else {
-          console.log("email sent to User");
-          res.json({ status: true, message: "Email sent to user" });
-        }
-      });
+      //   html: compiledTemplate.render({ userName: result.name }),
+      // };
+      // transporter.sendMail(message1, function (err, data) {
+      //   if (err) {
+      //     console.log(err);
+      //     res.status(400).json({ status: false, message: "ERROR while sending mail" });
+      //   } else {
+      //     console.log("email sent to User");
+      //     res.json({ status: true, message: "Email sent to user" });
+      //   }
+      // });
 
       const message2 = {
         from: {
