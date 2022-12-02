@@ -27,7 +27,7 @@ feedbackRouter.route("/feedback").post(feedback.postFeedbackData);
 feedbackRouter.route("/feedback").get(feedback.getFeedbackData);
 
 feedbackRouter.route("/feedback/photo/:id").post(upload("feedback").single("file"), async (req, res, next) => {
-  const url = `${req.protocol}://${req.get("host")}`;
+  const url = `https://${req.get("host")}`;
   // const url = "https://tinarosario.com/route";
   // const url = "http://localhost/route";
   const { file } = req;
